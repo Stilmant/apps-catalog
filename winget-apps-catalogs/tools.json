@@ -1,0 +1,29 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "Sources": [
+    {
+      "SourceDetails": {
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Type": "Microsoft.PreIndexed.Package"
+      },
+      "Packages": [
+        { "PackageIdentifier": "Microsoft.PowerToys" },
+        { "PackageIdentifier": "AntibodySoftware.WizTree" },
+        { "PackageIdentifier": "WinMerge.WinMerge" },
+        { "PackageIdentifier": "Mythicsoft.AgentRansack" },
+        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
+        { "PackageIdentifier": "WerWolv.ImHex" },
+        { "PackageIdentifier": "MHNexus.HxD" },
+        { "PackageIdentifier": "PuTTY.PuTTY" },
+        { "PackageIdentifier": "WinSCP.WinSCP" },
+        { "PackageIdentifier": "mRemoteNG.mRemoteNG" },
+        { "PackageIdentifier": "Logitech.OptionsPlus" },
+        { "PackageIdentifier": "Logitech.LogiBolt" },
+        { "PackageIdentifier": "zarunbal.LogExpert" },
+        { "PackageIdentifier": "CodeSector.TeraCopy" }
+      ]
+    }
+  ]
+}

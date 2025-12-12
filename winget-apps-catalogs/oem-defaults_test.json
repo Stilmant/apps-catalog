@@ -1,0 +1,35 @@
+{
+  "oem_installed": {
+    "AMD": [
+      "AMD Software: Adrenalin Edition",
+      "AMD Bug Report Tool",
+      "AMD Install Manager",
+      "AMD Software"
+    ],
+    "Audio_Licensed": [
+      "Rapture3D Speaker Layout",
+      "Rapture3D User Guide",
+      "DTS Sound Unbound",
+      "DTS:X Ultra"
+    ],
+    "HID_Gamepad": [
+      "ViGEmBus",
+      "HidHide Configuration Client"
+    ],
+    "Motion": [
+      "Motion Assistant"
+    ],
+    "Audio": [
+      "Realtek Audio Console"
+    ],
+    "Extra_Utilities": [
+      "HxD",
+      "ImHex",
+      "TeraCopy",
+      "WinMerge",
+      "Agent Ransack",
+      "mRemoteNG",
+      "WinSCP"
+    ]
+  }
+}

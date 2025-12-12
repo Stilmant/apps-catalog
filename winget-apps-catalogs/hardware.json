@@ -1,0 +1,17 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "Sources": [
+    {
+      "SourceDetails": {
+        "Identifier": "winget",
+        "Name": "winget",
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Type": "Microsoft.PreIndexed.Package"
+      },
+      "Packages": [
+        { "PackageIdentifier": "RaspberryPiFoundation.RaspberryPiImager" },
+        { "PackageIdentifier": "Synology.ImageAssistant" },
+      ]
+    }
+  ]
+}

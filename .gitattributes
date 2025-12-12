@@ -1,0 +1,9 @@
+# Default: standard behavior
+# - Let Git detect text files automatically
+# - Line endings follow user config (e.g. core.autocrlf on Windows)
+* text=auto
+
+# Keep upstream Oh My Posh themes exactly as upstream (LF)
+# This prevents Git from converting them to CRLF on Windows.
+powershell/oh-my-posh/upstream/** text eol=lf
+powershell/oh-my-posh/upstream/** linguist-vendored
