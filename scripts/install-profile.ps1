@@ -1,7 +1,14 @@
 Write-Host "Installing PowerShell profile..." -ForegroundColor Cyan
 
-# Source profile stored in repo
-$SourceProfile = Join-Path $PSScriptRoot "..\powershell\profile\Microsoft.PowerShell_profile.ps1"
+# Source profile folder in repo
+$SourceProfileFolder = Join-Path $PSScriptRoot "..\powershell\profile"
+$SourceProfile = Join-Path $SourceProfileFolder "Microsoft.PowerShell_profile.ps1"
+
+# Profile dependencies
+$ProfileDependencies = @(
+    "history-utils.ps1",
+    "oh-my-posh-utils.ps1"
+)
 
 # Basic sanity checks
 if (-not $PROFILE) {
@@ -22,17 +29,31 @@ if (-not (Test-Path $DestinationFolder)) {
     exit 1
 }
 
-# Source file must exist
+# Source files must exist
 if (-not (Test-Path $SourceProfile)) {
     Write-Warning "Source profile file not found:"
     Write-Warning $SourceProfile
     exit 1
 }
 
-# If destination profile does not exist, copy directly
+# If destination profile does not exist, copy profile + dependencies
 if (-not (Test-Path $DestinationProfile)) {
-    Write-Host "No existing profile found. Installing profile..."
+    Write-Host "No existing profile found. Installing profile and dependencies..."
+    
+    # Copy main profile
     Copy-Item $SourceProfile $DestinationProfile
+    
+    # Copy dependencies
+    foreach ($dep in $ProfileDependencies) {
+        $sourceDep = Join-Path $SourceProfileFolder $dep
+        $destDep = Join-Path $DestinationFolder $dep
+        
+        if (Test-Path $sourceDep) {
+            Copy-Item $sourceDep $destDep -Force
+            Write-Host "  - Copied $dep" -ForegroundColor Gray
+        }
+    }
+    
     Write-Host "Profile installed successfully." -ForegroundColor Green
     exit 0
 }
@@ -57,8 +78,19 @@ $choice = Read-Host "Your choice (1/2/3)"
 
 switch ($choice) {
     "1" {
+        # Overwrite profile + dependencies
         Copy-Item $SourceProfile $DestinationProfile -Force
-        Write-Host "Profile overwritten." -ForegroundColor Green
+        
+        foreach ($dep in $ProfileDependencies) {
+            $sourceDep = Join-Path $SourceProfileFolder $dep
+            $destDep = Join-Path $DestinationFolder $dep
+            
+            if (Test-Path $sourceDep) {
+                Copy-Item $sourceDep $destDep -Force
+            }
+        }
+        
+        Write-Host "Profile and dependencies overwritten." -ForegroundColor Green
     }
     "2" {
         Write-Host "Existing profile kept unchanged." -ForegroundColor Yellow

@@ -1,58 +1,49 @@
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\paradox.omp.json" | Invoke-Expression
+# ===============================
+# PowerShell Profile
+# ===============================
 
-# Remove default alias
-if (Test-Path alias:history) {
-    Remove-Item alias:history
-}
+# --- Core safety ----------------------------------------------------
 
-# New history function
-function history {
-    param(
-        [string]$Pattern = '*'
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+# Prevent profile failure from breaking the shell
+function Invoke-Safely {
+    param (
+        [Parameter(Mandatory)]
+        [ScriptBlock]$Script
     )
 
-    $path = (Get-PSReadLineOption).HistorySavePath
-    $all  = Get-Content $path
-
-    for ($i = 0; $i -lt $all.Count; $i++) {
-        $cmd = $all[$i]
-
-        if ($cmd -like "*$Pattern*") {
-            # $i + 1 = vrai numéro de ligne dans l'historique
-            "{0,6}  {1}" -f ($i + 1), $cmd
-        }
+    try {
+        & $Script
+    }
+    catch {
+        # Intentionally swallow errors to keep shell usable
+        Write-Verbose "Profile step skipped: $($_.Exception.Message)"
     }
 }
 
+# --- Core user behavior (PSReadLine) --------------------------------
 
-Set-PSReadLineKeyHandler -Key Enter -ScriptBlock {
-    param($key, $arg)
+Import-Module PSReadLine -ErrorAction SilentlyContinue
 
-    $line   = $null
-    $cursor = $null
-    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -EditMode Windows
+Set-PSReadLineOption -HistoryNoDuplicates
+Set-PSReadLineOption -MaximumHistoryCount 10000
 
-    if ($line -match '^!(\d+)$') {
-        $n = [int]$matches[1]
+# --- Oh My Posh (optional UI layer) ---------------------------------
 
-        $path  = (Get-PSReadLineOption).HistorySavePath
-        $lines = Get-Content $path
-
-        if ($n -ge 1 -and $n -le $lines.Count) {
-            $cmd = $lines[$n - 1]
-            [Microsoft.PowerShell.PSConsoleReadLine]::Replace(0, $line.Length, $cmd)
-            [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
-            return
-        }
-        else {
-            [Console]::Beep()
-            Write-Host "`nNuméro d'historique invalide: $n"
-            [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
-            return
-        }
-    }
-
-    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+Invoke-Safely {
+    . (Join-Path $PSScriptRoot "oh-my-posh-utils.ps1")
 }
+
+# --- History utilities ----------------------------------------------
+
+Invoke-Safely {
+    . (Join-Path $PSScriptRoot "history-utils.ps1")
+}
+
+# --- End of profile -------------------------------------------------
 
 
