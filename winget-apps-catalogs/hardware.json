@@ -10,7 +10,7 @@
       },
       "Packages": [
         { "PackageIdentifier": "RaspberryPiFoundation.RaspberryPiImager" },
-        { "PackageIdentifier": "Synology.ImageAssistant" },
+        { "PackageIdentifier": "Synology.ImageAssistant" }
       ]
     }
   ]

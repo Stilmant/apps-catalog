@@ -9,6 +9,7 @@
         "Type": "Microsoft.PreIndexed.Package"
       },
       "Packages": [
+        { "PackageIdentifier": "Notepad++.Notepad++" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
         { "PackageIdentifier": "AntibodySoftware.WizTree" },
         { "PackageIdentifier": "WinMerge.WinMerge" },

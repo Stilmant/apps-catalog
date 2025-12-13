@@ -1,13 +1,16 @@
 # PowerShell history utilities
 # Enhanced history function and !n recall keybinding
 
-# Remove default alias
+# Remove default alias and create a new alias to override the cmdlet
 if (Test-Path alias:history) {
-    Remove-Item alias:history
+    Remove-Item alias:history -Force
 }
 
+# Remove the built-in Get-History cmdlet from the current session scope
+Remove-Item function:history -ErrorAction SilentlyContinue
+
 # New history function with pattern filtering
-function history {
+function global:history {
     param(
         [string]$Pattern = '*'
     )

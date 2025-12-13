@@ -203,6 +203,54 @@ Notes:
 - Fonts required by Oh My Posh (e.g. Nerd Fonts) must be installed separately.
 - PSReadLine history is not migrated by this repo.
 
+#### Font setup for Oh My Posh (one-time manual step)
+
+Oh My Posh relies on Nerd Fonts to render icons and separators correctly.
+While fonts can be installed programmatically, **terminal font selection is intentionally not automated**.
+
+Why fonts cannot be auto-configured:
+- PowerShell is not the terminal host (it runs inside Windows Terminal, ConHost, etc.)
+- Windows Terminal settings are user-owned JSON files
+- Admin and user profiles differ
+- Automatic modification would be unsafe and brittle
+
+This setup follows a clear separation:
+- Shell behavior (profile, prompt) is automated and reproducible
+- UI capabilities (fonts) require explicit user confirmation
+
+**Installing the font** (programmatic, one-time):
+
+```powershell
+oh-my-posh font install Meslo
+```
+
+**Selecting the font in Windows Terminal** (manual, one-time per profile):
+
+1. Open Windows Terminal
+2. Settings (Ctrl+,)
+3. Profiles → PowerShell
+4. Appearance → Font face
+5. Select: **MesloLGS NF**
+6. Repeat for "PowerShell (Admin)" if you use it
+7. Restart Terminal
+
+**Which font to choose (recommended):**
+
+👉 **MesloLGS NF**
+
+This is the correct and canonical choice for Oh My Posh.
+
+**What the font names mean** (so you can ignore the rest):
+
+- **LGS / LGM**: Variants of Meslo tuned for different spacing. Both work, LGS is the usual reference.
+- **Mono**: Fixed-width. This is what you want in a terminal.
+- **Propo**: Proportional spacing. Do not use in terminals.
+- **DZ / SDZ / MDZ**: Internal Nerd Font variants. You can ignore them.
+
+If you see multiple "MesloLGS NF" entries, they're all equivalent (regular/bold/italic variants). Pick any.
+
+That's it. The profile will now display Oh My Posh icons correctly.
+
 #### PowerShell profile installer behavior (reference)
 
 This repo treats profile installation as a deliberate, manual migration.
