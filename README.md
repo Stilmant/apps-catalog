@@ -24,6 +24,8 @@ apps-catalog\
       install-all.ps1
       install-profile.ps1
    winget-apps-catalogs\
+      _notes\
+         not-winget-installable.md
       base.json
       dev.json
       tools.json
@@ -42,6 +44,9 @@ Catalog intent (high-level):
 - `hardware.json`: drivers and OEM utilities (best-effort; many OEM drivers/apps still come from Windows Update or vendor installers).
 
 Note: GPD does not provide an official winget package feed. Chipset/NPU drivers typically come via Windows Update.
+
+Notes:
+- `winget-apps-catalogs\_notes` is documentation/scratchpad content and is not used by any scripts.
 
 ---
 
