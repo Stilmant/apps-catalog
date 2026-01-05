@@ -23,7 +23,8 @@
         { "PackageIdentifier": "Logitech.OptionsPlus" },
         { "PackageIdentifier": "Logitech.LogiBolt" },
         { "PackageIdentifier": "zarunbal.LogExpert" },
-        { "PackageIdentifier": "CodeSector.TeraCopy" }
+        { "PackageIdentifier": "CodeSector.TeraCopy" },
+        { "PackageIdentifier": "IDRIX.VeraCrypt", "PackageVersion": "1.26.24" }
       ]
     }
   ]

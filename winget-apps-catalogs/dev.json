@@ -14,7 +14,8 @@
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "DBeaver.DBeaver.Community" },
         { "PackageIdentifier": "OpenJS.NodeJS.22" },
-        { "PackageIdentifier": "Atlassian.Sourcetree" }
+        { "PackageIdentifier": "Atlassian.Sourcetree" },
+        { "PackageIdentifier": "Python.PythonInstallManager" }
       ]
     }
   ]
