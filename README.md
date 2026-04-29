@@ -77,6 +77,17 @@ What happens:
 winget import .\winget-apps-catalogs\base.json --disable-interactivity
 ```
 
+### Check whether a catalog is already fully installed
+
+```powershell
+.\scripts\Test-CatalogInstalled.ps1 -CatalogPath .\winget-apps-catalogs\dev.json
+```
+
+What happens:
+- The script exports the installed `winget` packages once, then checks each catalog package identifier against that installed package set
+- The script prints any missing packages and exits with code `1` if the catalog is incomplete
+- If every package is installed, it exits with code `0`
+
 ### Install the PowerShell profile (Oh My Posh setup)
 
 ```powershell
