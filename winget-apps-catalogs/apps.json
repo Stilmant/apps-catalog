@@ -14,7 +14,8 @@
         { "PackageIdentifier": "VideoLAN.VLC" },
         { "PackageIdentifier": "OpenWhisperSystems.Signal" },
         { "PackageIdentifier": "SlackTechnologies.Slack" },
-        { "PackageIdentifier": "KeePassXCTeam.KeePassXC" }
+        { "PackageIdentifier": "KeePassXCTeam.KeePassXC" },
+        { "PackageIdentifier": "Obsidian.Obsidian" }
       ]
     }
   ]
