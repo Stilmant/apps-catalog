@@ -15,6 +15,7 @@
         { "PackageIdentifier": "WinMerge.WinMerge" },
         { "PackageIdentifier": "Mythicsoft.AgentRansack" },
         { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
+        { "PackageIdentifier": "Gyan.FFmpeg" },
         { "PackageIdentifier": "WerWolv.ImHex" },
         { "PackageIdentifier": "MHNexus.HxD" },
         { "PackageIdentifier": "PuTTY.PuTTY" },
