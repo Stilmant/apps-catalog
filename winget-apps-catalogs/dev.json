@@ -10,6 +10,7 @@
       },
       "Packages": [
         { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "Git.GCM" },
         { "PackageIdentifier": "GitHub.cli" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "DBeaver.DBeaver.Community" },
